@@ -1,9 +1,0 @@
-com\silver\commerce\model\Category.class
-com\silver\commerce\model\Sku.class
-com\silver\commerce\TestDBServlet.class
-com\silver\commerce\dao\CatalogDaoImpl.class
-com\silver\commerce\model\Product.class
-com\silver\commerce\HomeController.class
-com\silver\commerce\repository\CategoryRepository.class
-com\silver\commerce\TestDao.class
-com\silver\commerce\dao\CatalogDao.class
