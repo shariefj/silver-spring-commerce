@@ -40,7 +40,7 @@ public class JpaConfig {
 	  public DataSource dataSource(){
 	      DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	      dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-	      dataSource.setUrl("jdbc:mysql://192.168.1.249:3306/COMMERCE?useSSL=false&serverTimezone=UTC");
+	      dataSource.setUrl("jdbc:mysql://192.168.1.249:3306/COMMERCE?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
 	      dataSource.setUsername( "silver_commerce" );
 	      dataSource.setPassword( "silver_commerce" );
 	      return dataSource;
