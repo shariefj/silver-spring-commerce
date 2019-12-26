@@ -1,5 +1,7 @@
 package com.silver.commerce.model;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,8 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "SKU")
@@ -20,12 +25,17 @@ public class Sku {
 	String skuName;
 	String skuDescription;
 	String skuImageUrl;
-	boolean onSale;
-	boolean isActive;
+	boolean onSale = false;
+	boolean isActive = false;
 	double listPrice;
 	double SalePrice;
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,optional = false)
-	@JoinColumn(name="productId",nullable = false)
+	Date startDate;
+	Date endDate;
+	
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.EAGER,optional = true)
+	@JoinTable(name = "PRD_CHLD_SKUS")
+	@JoinColumn(name="productId")
 	Product product;
 	
 	public Sku() {
@@ -102,6 +112,22 @@ public class Sku {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	
 	

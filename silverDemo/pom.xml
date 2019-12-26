@@ -140,7 +140,37 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<!-- Rest Enabling -->
+		
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.9.0</version>
+	</dependency>
 	
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-core</artifactId>
+	    <version>2.9.0</version>
+	</dependency>
+	
+	<!--  Data processing  -->
+	
+				<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.solr/solr-solrj -->
+			<dependency>
+			    <groupId>org.apache.solr</groupId>
+			    <artifactId>solr-solrj</artifactId>
+			    <version>8.3.0</version>
+			</dependency>
+			
+			
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -189,6 +219,18 @@
   				<artifactId>maven-war-plugin</artifactId>
   				<version>3.0.0</version>
 			</plugin>
-        </plugins>
+			
+			<plugin>
+			    <groupId>org.apache.tomcat.maven</groupId>
+			    <artifactId>tomcat7-maven-plugin</artifactId>
+			    <version>2.2</version>
+			    <configuration>
+		        <url>http://localhost:8080/manager/text</url>
+		        <server>TomcatServer</server>
+		        <path>/myapp</path>
+			    </configuration>
+			</plugin>
+       </plugins>
+        
     </build>
 </project>

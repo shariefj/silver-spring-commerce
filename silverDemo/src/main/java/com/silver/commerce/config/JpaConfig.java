@@ -40,7 +40,7 @@ public class JpaConfig {
 	  public DataSource dataSource(){
 	      DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	      dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-	      dataSource.setUrl("jdbc:mysql://192.168.1.249:3306/COMMERCE?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
+	      dataSource.setUrl("jdbc:mysql://localhost:3306/commerce?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
 	      dataSource.setUsername( "silver_commerce" );
 	      dataSource.setPassword( "silver_commerce" );
 	      return dataSource;
@@ -62,9 +62,10 @@ public class JpaConfig {
 	   
 	  Properties additionalProperties() {
 	      Properties properties = new Properties();
-	      properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-	      properties.setProperty("hibernate.show_sql", "true");
+	     properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+	 //     properties.setProperty("hibernate.show_sql", "true");
 	      properties.setProperty("hibernate.format_sql", "true");
+	   //   properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
 	      properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 	          
 	      return properties;

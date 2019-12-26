@@ -1,11 +1,14 @@
 package com.silver.commerce.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Basic;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,11 +16,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "CATEGORY")
+@JsonIgnoreProperties(value = {"childCategories"})
 public class Category {
 	
 	@Id
@@ -30,13 +38,26 @@ public class Category {
 	
 	String categoryImageUrl;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	boolean root = false;
+	
+	Date startDate ;
+	
+	Date endDate;
+
+	
+	@ManyToOne
+	@JoinColumn(name = "parent_id")
 	@JoinTable(name = "CHILD_CATEGORIES")
+	private Category parent;
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "parent")
+	
 	List<Category> childCategories = new ArrayList<Category>();
 	
-	boolean active;
+	boolean active = false;
 	
-	@OneToMany(fetch = FetchType.LAZY,orphanRemoval = true,mappedBy = "parentCategory")
+	@OneToMany(fetch = FetchType.EAGER,orphanRemoval = true,mappedBy = "parentCategory")
+	@JsonManagedReference
 	Set<Product> childProducts = new HashSet<Product>();
 	
 	public Category() {
@@ -116,6 +137,39 @@ public class Category {
 	public void setChildCategories(List<Category> childCategories) {
 		this.childCategories = childCategories;
 	}
-	
+
+ 
+	public boolean isRoot() {
+		return root;
+	}
+
+	public void setRoot(boolean isRoot) {
+		this.root = isRoot;
+	}
+
+	public Category getParent() {
+		return parent;
+	}
+
+	public void setParent(Category parent) {
+		this.parent = parent;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 	
 }

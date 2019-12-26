@@ -1,5 +1,6 @@
 package com.silver.commerce.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "PRODUCT")
 public class Product {
@@ -29,14 +33,24 @@ public class Product {
 	
 	String productImageUrl;
 	
-	boolean isActive;
+	String brand;
 	
-	@OneToMany(fetch = FetchType.LAZY,orphanRemoval = true,mappedBy = "product")
+	boolean isActive = false;
+	
+	Date startDate;
+	
+	Date endDate;
+
+	
+	@OneToMany(fetch = FetchType.EAGER,orphanRemoval = true,mappedBy = "product",cascade = CascadeType.ALL)
+	
 	Set<Sku> childSkus = new HashSet<Sku>();
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,optional = false)
-	@JoinColumn(name="categoryId",nullable = false)
+	
+	@ManyToOne(fetch = FetchType.EAGER,optional = true)
+	@JoinColumn(name="categoryId")
 	@JoinTable(name = "PRD_CHLD_CAT")
+	@JsonBackReference
 	Category parentCategory;
 	
 	public Product() {
@@ -97,6 +111,7 @@ public class Product {
 
 	public void setChildSkus(Set<Sku> childSkus) {
 		this.childSkus = childSkus;
+		
 	}
 
 	public Category getParentCategory() {
@@ -106,6 +121,31 @@ public class Product {
 	public void setParentCategory(Category parentCategory) {
 		this.parentCategory = parentCategory;
 	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	
 	
 	
 }
