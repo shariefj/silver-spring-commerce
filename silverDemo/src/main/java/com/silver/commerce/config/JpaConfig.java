@@ -49,6 +49,10 @@ public class JpaConfig {
 		  hikariConfig.setConnectionTimeout(30000);
 		  hikariConfig.setIdleTimeout(60000);
 		  hikariConfig.setMaxLifetime(1800000);
+		  hikariConfig.setPoolName("SilverCommercePool");
+		  hikariConfig.setMaximumPoolSize(2);
+		  hikariConfig.setMinimumIdle(1);
+		  
 		  HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 	      return dataSource;
 	  }
