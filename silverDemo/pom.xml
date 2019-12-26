@@ -14,6 +14,9 @@
 		<hibernate.version>5.4.1.Final</hibernate.version>
 		<org.aspectj-version>1.9.0</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<hikaricp-version>3.4.0</hikaricp-version>
+		<solrj-version>8.3.0</solrj-version>
+		<jackson-verison>2.9.10</jackson-verison>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -52,13 +55,6 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
-		<dependency>
-			<groupId>c3p0</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.1.2</version>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -79,6 +75,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${org.slf4j-version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -147,13 +144,13 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.0</version>
+			<version>${jackson-verison}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.9.0</version>
+			<version>${jackson-verison}</version>
 		</dependency>
 
 		<!-- Data processing -->
@@ -168,7 +165,7 @@
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-solrj</artifactId>
-			<version>8.3.0</version>
+			<version>${solrj-version}</version>
 		</dependency>
 
 
@@ -176,7 +173,7 @@
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
-			<version>3.4.0</version>
+			<version>${hikaricp-version}</version>
 		</dependency>
 
 
