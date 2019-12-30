@@ -17,6 +17,7 @@
 		<hikaricp-version>3.4.0</hikaricp-version>
 		<solrj-version>8.3.0</solrj-version>
 		<jackson-verison>2.10.1</jackson-verison>
+		<swagger-version>2.9.1</swagger-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -176,6 +177,19 @@
 			<version>${hikaricp-version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger-version}</version>
+		</dependency>
 
 
 		<!-- Test -->
