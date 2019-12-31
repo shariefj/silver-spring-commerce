@@ -1,7 +1,18 @@
 package com.silver.commerce.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PRICE_INFO")
 public class PriceInfo {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int priceId;
 	double amount;
 	double tax;
 	double price;
@@ -22,6 +33,12 @@ public class PriceInfo {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public int getPriceId() {
+		return priceId;
+	}
+	public void setPriceId(int priceId) {
+		this.priceId = priceId;
 	}
 	
 	

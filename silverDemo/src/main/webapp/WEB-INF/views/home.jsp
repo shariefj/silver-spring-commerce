@@ -60,5 +60,11 @@ body {
 	</c:forEach>  
 </div>
 
+Session Order : ${sessionCount}
+Session Shipping  : ${sessionCount.shippingGroup}
+Session Payment  : ${sessionCount.paymentGroup}
+Session items  : ${sessionCount.items}
+
+
 </body>
 </html>

@@ -1,7 +1,17 @@
 package com.silver.commerce.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CONTACT_INFO")
 public class Address {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int addressId;
 	
 	String firstName;

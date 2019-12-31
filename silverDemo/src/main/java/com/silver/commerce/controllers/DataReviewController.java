@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.silver.commerce.OrderHolder;
 import com.silver.commerce.dao.CatalogDao;
 import com.silver.commerce.model.Category;
+import com.silver.commerce.model.Order;
 import com.silver.commerce.model.Product;
 import com.silver.commerce.model.Sku;
 import com.silver.commerce.services.CatalogServices;
@@ -23,8 +25,12 @@ public class DataReviewController {
 	@Autowired
 	CatalogDao catalogDao;
 	
+	
 	@Autowired
 	CatalogServices catalogServicesImpl;
+	
+	@Autowired
+	OrderHolder orderHolder;
 	
  	
 	@GetMapping("/categories")
@@ -54,6 +60,12 @@ public class DataReviewController {
 	public List<Category> getChild(@PathVariable int categoryId ) {
 		
 		return catalogServicesImpl.fetchChildCategories(categoryId);
+	}
+	
+	@GetMapping("/order")
+	public Order getOrder() {
+		
+		return orderHolder.getCurrentOrder();
 	}
 	
 }

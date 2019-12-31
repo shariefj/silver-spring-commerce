@@ -26,6 +26,7 @@ public class InitialDataSetup {
 	@Autowired
 	InventoryDao inventoryDaoImpl;
 	
+	int globalCount = 10;
 	
 	@PostConstruct
 	public void setupData() {
@@ -373,4 +374,17 @@ public class InitialDataSetup {
 			
 			inventoryDaoImpl.createInventories(inventories);
 	}
+
+	public int getGlobalCount() {
+		return globalCount;
+	}
+
+	public void setGlobalCount(int globalCount) {
+		this.globalCount = globalCount;
+	}
+
+	
+
 }
+
+

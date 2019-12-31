@@ -1,20 +1,39 @@
 package com.silver.commerce.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity
+@Table(name = "SHIPPING")
 public class ShippingGroup  {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int shippingGroupid;
 	
 	String handlingInstructions;
 	
+	@OneToOne(cascade = CascadeType.ALL)
 	PriceInfo priceInfo;
 	
 	String shippingMethod;
 	
+	@OneToOne(cascade = CascadeType.ALL)
 	Address shippingAddress;
+	
+	String state;
 	
 	@OneToOne
 	@PrimaryKeyJoinColumn
+	@JsonBackReference
 	Order orderRef;
 
 	public ShippingGroup() {
@@ -52,5 +71,22 @@ public class ShippingGroup  {
 	public void setShippingAddress(Address shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Order getOrderRef() {
+		return orderRef;
+	}
+
+	public void setOrderRef(Order orderRef) {
+		this.orderRef = orderRef;
+	}
+	
 	
 }

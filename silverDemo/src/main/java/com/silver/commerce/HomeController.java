@@ -1,5 +1,6 @@
 package com.silver.commerce;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +14,9 @@ import org.apache.solr.common.util.Hash;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+import com.silver.commerce.config.ApplicationConfiguration;
 import com.silver.commerce.model.Category;
 import com.silver.commerce.services.CatalogServices;
 
@@ -36,21 +42,28 @@ public class HomeController {
 	@Autowired
 	CatalogServices catalogServicesImpl;
 	
+	@Autowired
+	OrderHolder orderHolder;
+	
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		List<Category> rootCategories = catalogServicesImpl.fetchRootCategories();
+		System.out.println("scope ::: " + orderHolder);
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("rootCategories", rootCategories );
-		
+		model.addAttribute("sessionCount",orderHolder.getCurrentOrder());
+		System.out.println("TEst");
 		return "home";
 	}
 	
@@ -62,4 +75,8 @@ public class HomeController {
 		model.addAttribute("categoryId",categoryId);
 		return "categories";
 	}
+	
+	
+	
+	
 }

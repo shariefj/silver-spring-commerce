@@ -1,19 +1,35 @@
 package com.silver.commerce.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "ITEM")
 public class Item {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int itemid;
 	int productid;
 	int skuid;
 	int qty;
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	PriceInfo priceInfo;
 	
+	String state;
+	
 	 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL,optional = false)
+	@JoinColumn(name="orderId")
 	@JoinTable(name = "ORDER_ITEM")
 	Order orderRef;
 	
@@ -67,6 +83,14 @@ public class Item {
 
 	public void setOrderRef(Order orderRef) {
 		this.orderRef = orderRef;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	
