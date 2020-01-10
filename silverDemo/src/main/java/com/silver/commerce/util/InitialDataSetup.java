@@ -190,6 +190,9 @@ public class InitialDataSetup {
 			greenShawl.setSkuName("A Green Color Shawl with Palatte");
 			greenShawl.setSalePrice(100.00);
 			greenShawl.setListPrice(110.00);
+			greenShawl.setDefaultSku(true);
+			greenShawl.setColor("Green");
+		
 			
 			Sku yellowShawl = new Sku();
 			yellowShawl.setActive(true);
@@ -198,6 +201,7 @@ public class InitialDataSetup {
 			yellowShawl.setSkuName("A Yello Color Shawl with Palatte");
 			yellowShawl.setSalePrice(130.00);
 			yellowShawl.setListPrice(140.00);
+			yellowShawl.setColor("Yellow");
 			
 			
 			Sku maroonShirt = new Sku();
@@ -207,6 +211,8 @@ public class InitialDataSetup {
 			maroonShirt.setSkuName("A Maroon Color slim fit shirt");
 			maroonShirt.setSalePrice(132.00);
 			maroonShirt.setListPrice(150.00);
+			maroonShirt.setDefaultSku(true);
+			maroonShirt.setColor("Maroon");
 			
 			Sku greyShirt = new Sku();
 			greyShirt.setActive(true);
@@ -215,6 +221,7 @@ public class InitialDataSetup {
 			greyShirt.setSkuName("A Grey Color slim fit shirt");
 			greyShirt.setSalePrice(150.00);
 			greyShirt.setListPrice(150.00);
+			greyShirt.setColor("Grey");
 			
 			
 			Sku whiteBoots = new Sku();
@@ -224,6 +231,8 @@ public class InitialDataSetup {
 			whiteBoots.setSkuName("White Boots");
 			whiteBoots.setSalePrice(110.00);
 			whiteBoots.setListPrice(110.00);
+			whiteBoots.setDefaultSku(true);
+			whiteBoots.setColor("White");
 			
 			Sku silverBoots = new Sku();
 			silverBoots.setActive(true);
@@ -232,6 +241,7 @@ public class InitialDataSetup {
 			silverBoots.setSkuName("Sivler Boots");
 			silverBoots.setSalePrice(120.00);
 			silverBoots.setListPrice(150.00);
+			silverBoots.setColor("silver");
 			
 			
 			Sku whiteSneakers = new Sku();
@@ -241,6 +251,9 @@ public class InitialDataSetup {
 			whiteSneakers.setSkuName("White Sneakers");
 			whiteSneakers.setSalePrice(110.00);
 			whiteSneakers.setListPrice(110.00);
+			whiteSneakers.setDefaultSku(true);
+			whiteSneakers.setColor("White");
+			
 			
 			Sku silverSneakers = new Sku();
 			silverSneakers.setActive(true);
@@ -249,6 +262,8 @@ public class InitialDataSetup {
 			silverSneakers.setSkuName("Sivler Sneakers");
 			silverSneakers.setSalePrice(120.00);
 			silverSneakers.setListPrice(150.00);
+			silverSneakers.setColor("Silver");
+			
 			
 			Sku versa2 = new Sku();
 			versa2.setActive(true);
@@ -257,7 +272,8 @@ public class InitialDataSetup {
 			versa2.setSkuName("White Fitbit");
 			versa2.setSalePrice(180.00);
 			versa2.setListPrice(180.00);
-			
+			versa2.setDefaultSku(true);
+			versa2.setColor("Sunny Pink");
 			
 			Sku versa2lite = new Sku();
 			versa2lite.setActive(true);
@@ -266,6 +282,8 @@ public class InitialDataSetup {
 			versa2lite.setSkuName("Silver Fitbit");
 			versa2lite.setSalePrice(124.00);
 			versa2lite.setListPrice(180.00);
+			versa2lite.setDefaultSku(true);
+			versa2lite.setColor("Pale Yellow");
 			
 			
 			//watches
@@ -274,6 +292,7 @@ public class InitialDataSetup {
 			fitbitversa.setProductName("Fitbit Versa2men");
 			fitbitversa.setActive(true);
 			fitbitversa.setDescription("Fitbit versa for men");
+			fitbitversa.setBrand("Fitbit");
 			Set<Sku> versas = new HashSet<Sku>();
 		//	versas.add(versa2);
 			versas.add(versa2lite);
@@ -286,6 +305,7 @@ public class InitialDataSetup {
 			fitbitversaw.setProductName("Fitbit Versa2");
 			fitbitversaw.setActive(true);
 			fitbitversaw.setDescription("Fitbit versa for women");
+			fitbitversaw.setBrand("Fitbit");
 			Set<Sku> versasw = new HashSet<Sku>();
 			versasw.add(versa2);
 		//	versasw.add(versa2lite);
@@ -300,14 +320,14 @@ public class InitialDataSetup {
 			sureSneakers.setProductName("Sure Sneakers for Spring");
 			sureSneakers.setActive(true);
 			sureSneakers.setDescription("Sure Sneakers");
-			Set<Sku> sneaks = new HashSet<Sku>();
-			sneaks.add(whiteBoots);
-			sneaks.add(silverBoots);
-			whiteBoots.setProduct(sureSneakers);
-			silverBoots.setProduct(sureSneakers);
+			Set<Sku> sneaks = new HashSet();
+			sneaks.add(whiteSneakers);
+			sneaks.add(silverSneakers);
+			whiteSneakers.setProduct(sureSneakers);
+			silverSneakers.setProduct(sureSneakers);
 			sureSneakers.setChildSkus(sneaks);
 			sureSneakers.setParentCategory(sneakers);
-			
+			sureSneakers.setBrand("Skchers");
 			
 			//Boots
 			
@@ -322,10 +342,11 @@ public class InitialDataSetup {
 			silverBoots.setProduct(kidsSnowBoots);
 			kidsSnowBoots.setChildSkus(bootsKsus);
 			kidsSnowBoots.setParentCategory(boots   );
-
+			kidsSnowBoots.setBrand("Skchers");
 			
 			
 			Product shawl = new Product();
+			shawl.setBrand("Michaelkors");
 			shawl.setProductName("Silk Shawl");
 			shawl.setActive(true);
 			shawl.setDescription("Michael Kors Silk Shawl");
@@ -340,6 +361,7 @@ public class InitialDataSetup {
 			
 				
 			Product shirt = new Product();
+			shirt.setBrand("Michaelkors");
 			shirt.setProductName("Mens Shirt with beatuififul Linen culture");
 			shirt.setActive(true);
 			shirt.setDescription("Mens Shirt with beatuififul Linen culture");
@@ -363,9 +385,9 @@ public class InitialDataSetup {
 			catalogDaoImpl.createProducts(pProducts);
 			
 			Inventory inventory = null;
-			List<Inventory> inventories = new ArrayList<Inventory>();
+			List<Inventory> inventories = new ArrayList();
 			
-			for(int i=1 ; i <=10 ;i++) {
+			for(int i=3001 ; i <=3010 ;i++) {
 				inventory  = new Inventory();
 				inventory.setSkuid(i);
 				inventory.setStocklevel(100);

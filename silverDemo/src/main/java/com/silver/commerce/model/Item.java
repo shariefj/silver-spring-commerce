@@ -9,14 +9,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "ITEM")
 public class Item {
-	
+	@SequenceGenerator(name="citem", initialValue=6001, allocationSize=50)
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "citem")
 	int itemid;
 	int productid;
 	int skuid;

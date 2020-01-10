@@ -13,9 +13,10 @@ import com.silver.commerce.model.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer>{
 
-	@Query("SELECT cat FROM Category cat WHERE cat.root = 1")
+	@Query("SELECT cat FROM Category cat WHERE cat.root = 1 and cat.active = 1")
 	public List<Category> fetchAllRootCateqory();
 	
+	//Lazy Loading
 	@Query("SELECT distinct p FROM Category p JOIN FETCH p.childCategories WHERE p.categoryId = (:categoryId)")
 	public List<Category> fetchChildCategories(@Param("categoryId") Integer categoryId );
 }

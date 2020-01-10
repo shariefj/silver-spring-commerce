@@ -1,8 +1,8 @@
 package com.silver.commerce.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,16 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "SKU")
-public class Sku {
+public class Sku implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@SequenceGenerator(name="sk", initialValue=3001, allocationSize=50)
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "sk")
 	Integer skuId;
 	String skuName;
 	String skuDescription;
@@ -28,9 +35,12 @@ public class Sku {
 	boolean onSale = false;
 	boolean isActive = false;
 	double listPrice;
-	double SalePrice;
+	double salePrice;
 	Date startDate;
 	Date endDate;
+	String color;
+	String size;
+	boolean defaultSku = false;
 	
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER,optional = true)
@@ -39,7 +49,7 @@ public class Sku {
 	Product product;
 	
 	public Sku() {
-		// TODO Auto-generated constructor stub
+		 
 	}
 
 	public Integer getSkuId() {
@@ -99,11 +109,11 @@ public class Sku {
 	}
 
 	public double getSalePrice() {
-		return SalePrice;
+		return salePrice;
 	}
 
 	public void setSalePrice(double salePrice) {
-		SalePrice = salePrice;
+		salePrice = salePrice;
 	}
 
 	public Product getProduct() {
@@ -128,6 +138,30 @@ public class Sku {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public boolean isDefaultSku() {
+		return defaultSku;
+	}
+
+	public void setDefaultSku(boolean defaultSku) {
+		this.defaultSku = defaultSku;
 	}
 	
 	

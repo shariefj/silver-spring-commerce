@@ -62,10 +62,24 @@ public class DataReviewController {
 		return catalogServicesImpl.fetchChildCategories(categoryId);
 	}
 	
+	@GetMapping("/details/product/{productId}")
+	public Product getProduct(@PathVariable int productId ) {
+		
+		return catalogServicesImpl.fetchProductById(productId);
+	}
+	
 	@GetMapping("/order")
 	public Order getOrder() {
 		
 		return orderHolder.getCurrentOrder();
 	}
+	
+	
+	@GetMapping("/details/sku/{productId}")
+	public List<String> getDefaultSku(@PathVariable int productId ) {
+		return catalogServicesImpl.fetchAllSkuColors(productId);
+	}
+
+
 	
 }

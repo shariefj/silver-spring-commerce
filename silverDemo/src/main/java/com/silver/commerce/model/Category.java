@@ -1,7 +1,7 @@
 package com.silver.commerce.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,9 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -25,10 +24,14 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "CATEGORY")
 @JsonIgnoreProperties(value = {"childCategories"})
-public class Category {
+public class Category  implements Serializable{
+	
+	@SequenceGenerator(name="cat", initialValue=1001, allocationSize=100)
+	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "cat")
+	
 	Integer categoryId;
 	
 	String categoryName;
@@ -56,7 +59,7 @@ public class Category {
 	Set<Product> childProducts = new HashSet<Product>();
 	
 	public Category() {
-		// TODO Auto-generated constructor stub
+	
 	}
 	
 	/**

@@ -17,7 +17,9 @@ public class InventoryDaoImpl implements InventoryDao {
 	@Override
 	public int getStockLevel(int skuid) {
 		// TODO Auto-generated method stub
-		return 0;
+		Inventory inventory =  inventoryRepository.findBySkuId(skuid);
+		return inventory.getStocklevel();
+		
 	}
 
 	@Override

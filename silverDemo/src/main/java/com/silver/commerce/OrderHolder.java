@@ -60,6 +60,7 @@ public class OrderHolder {
 			shippingGroup.setOrderRef(currentOrder);
 			currentOrder.setPaymentGroup(paymentGroup);
 			paymentGroup.setOrderRef(currentOrder);
+			System.out.println(currentOrder.getOrderId() +"***********");
 		}
 
 		return currentOrder;

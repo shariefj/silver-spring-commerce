@@ -36,4 +36,8 @@ public interface CatalogDao {
 	
 	public List<Category> fetchRootCategories() ;
 	
+	public Sku getDefaultSku(int productId);
+	
+	public List<String> fetchAvailableColors  (int productId);
+	
 }

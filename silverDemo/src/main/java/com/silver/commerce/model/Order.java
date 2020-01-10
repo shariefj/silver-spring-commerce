@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -23,9 +24,9 @@ public class Order {
 	    INCOMPLETE, SUBMITTED, FULFILLED; 
 	} 
 	
-	
+	@SequenceGenerator(name="ord", initialValue=10001, allocationSize=50)
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "ord")
 	int orderId;
 	
 	State state = State.INCOMPLETE;

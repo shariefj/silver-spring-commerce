@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -14,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "PAYMENT")
 public class PaymentGroup {
-	
+	@SequenceGenerator(name="pg", initialValue=9001, allocationSize=50)
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY ,generator = "pg")
 	int paymentId;
 	
 	String paymentMethod;
