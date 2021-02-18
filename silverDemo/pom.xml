@@ -16,7 +16,7 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<hikaricp-version>3.4.0</hikaricp-version>
 		<solrj-version>8.3.0</solrj-version>
-		<jackson-verison>2.10.1</jackson-verison>
+		<jackson-verison>2.12.1</jackson-verison>
 		<swagger-version>2.9.1</swagger-version>
 	</properties>
 	<dependencies>
